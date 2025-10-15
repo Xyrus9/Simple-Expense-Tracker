@@ -171,6 +171,9 @@ function App() {
           }
         </MainContent>
       </DashboardContainer>
+      <footer style={{marginTop:40, textAlign:'center', color:'#1a237e', fontFamily:'Poppins, Montserrat, Segoe UI, Arial, sans-serif', fontWeight:600, fontSize:18, letterSpacing:1}}>
+        &copy; saiaungbhonekhant 2025 Oct
+      </footer>
     </div>
   );
 }
