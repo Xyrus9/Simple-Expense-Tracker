@@ -12,18 +12,18 @@ import SummaryCards from './Components/SummaryCards';
 
 const Header = styled(Typography)`
   margin: 32px 0 24px 0;
-  color: #1a237e;
-  font-size: 56px;
+  color: #0d1333;
+  font-size: 60px;
   font-family: 'Poppins', 'Montserrat', 'Segoe UI', Arial, sans-serif;
   font-weight: 900;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   text-transform: uppercase;
   text-align: center;
-  text-shadow: 0 4px 24px rgba(26,35,126,0.18);
+  text-shadow: 0 6px 32px rgba(13,19,51,0.18);
 `;
 
 const DashboardContainer = styled(Box)`
-  background: #f6f8fa;
+  background: #FFF;
   padding: 30px;
   border-radius: 20px;
   display: flex;
@@ -171,8 +171,8 @@ function App() {
           }
         </MainContent>
       </DashboardContainer>
-      <footer style={{marginTop:40, textAlign:'center', color:'#1a237e', fontFamily:'Poppins, Montserrat, Segoe UI, Arial, sans-serif', fontWeight:600, fontSize:18, letterSpacing:1}}>
-        &copy; saiaungbhonekhant 2025 Oct
+      <footer style={{marginTop:40, textAlign:'center', color:'#0d1333', fontFamily:'Poppins, Montserrat, Segoe UI, Arial, sans-serif', fontWeight:700, fontSize:20, letterSpacing:2, paddingBottom:24}}>
+        <span style={{fontSize:22, marginRight:8}}>&copy;</span> saiaungbhonekhant 2025 Oct
       </footer>
     </div>
   );

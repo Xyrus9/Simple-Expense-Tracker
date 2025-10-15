@@ -11,12 +11,12 @@ const SummaryCard = styled(Card)`
   flex: 1;
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  background: linear-gradient(135deg, #e0f7fa 0%, #fff 100%);
-  transition: transform 0.2s, box-shadow 0.2s;
+  background: linear-gradient(135deg, #e3e6f3 0%, #f6f8fa 100%);
+  transition: transform 0.25s, box-shadow 0.25s;
   &:hover {
-    transform: scale(1.06);
-    box-shadow: 0 8px 32px rgba(44,62,80,0.18);
-    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    transform: scale(1.08) rotate(-2deg);
+    box-shadow: 0 12px 36px rgba(13,19,51,0.18);
+    background: linear-gradient(135deg, #d1e7ff 0%, #f6f8fa 100%);
   }
 `;
 
