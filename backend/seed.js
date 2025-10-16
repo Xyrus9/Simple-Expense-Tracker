@@ -1,8 +1,14 @@
-import mongoose from 'mongoose';
 
-const mongoUser = 'saisaiaungbhone';
-const mongoPw = 'jqN3HyKozl6wCwDz';
-const mongoUri = `mongodb+srv://${mongoUser}:${mongoPw}@cluster0.ic99n.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const mongoUser = process.env.MONGO_USER;
+const mongoPw = process.env.MONGO_PASSWORD;
+const mongoHost = process.env.MONGO_HOST;
+const mongoDb = process.env.MONGO_DB;
+const mongoUri = `mongodb+srv://${mongoUser}:${mongoPw}@${mongoHost}/${mongoDb}?retryWrites=true&w=majority`;
 
 const expenseSchema = new mongoose.Schema({
   description: String,

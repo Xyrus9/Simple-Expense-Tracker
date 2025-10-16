@@ -1,5 +1,6 @@
+
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from './api';
 
 import { Typography, Box, styled } from '@mui/material';
 import './App.css';
@@ -57,7 +58,7 @@ function App() {
   const [fetchError, setFetchError] = useState(null);
 
   const deleteTransaction = async (id) => {
-  await axios.delete(`/api/expenses/${id}`);
+  await api.delete(`/expenses/${id}`);
     setTransactions(transactions.filter(transaction => transaction._id !== id));
   }
 
@@ -68,10 +69,10 @@ function App() {
         category: transaction.category || 'General',
         date: transaction.date || new Date()
       };
-  const res = await axios.post('/api/expenses', newTransaction);
+  const res = await api.post('/expenses', newTransaction);
       console.log('Add response:', res.data);
       // Refetch transactions to ensure dashboard updates
-  const fetchRes = await axios.get('/api/expenses');
+  const fetchRes = await api.get('/expenses');
       setTransactions(fetchRes.data.reverse());
     } catch (err) {
       console.error('Error adding transaction:', err);
@@ -80,7 +81,7 @@ function App() {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-  const res = await axios.get('/api/expenses');
+  const res = await api.get('/expenses');
         console.log('Fetched expenses:', res.data);
         setTransactions(res.data.reverse());
         setFetchError(null);

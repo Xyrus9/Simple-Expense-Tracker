@@ -17,14 +17,14 @@ const StyledButton = styled(Button)`
 const NewTransaction = ({ addTransaction }) => {
     // Expense form state
     const [expenseText, setExpenseText] = useState('');
-    const [expenseAmount, setExpenseAmount] = useState();
+    const [expenseAmount, setExpenseAmount] = useState('');
     const expenseCategories = ['Food', 'Shopping', 'Bills', 'Other'];
     const [expenseCategory, setExpenseCategory] = useState(expenseCategories[0]);
     const [expenseDate, setExpenseDate] = useState(new Date().toISOString().slice(0, 10));
 
     // Income form state
     const [incomeText, setIncomeText] = useState('');
-    const [incomeAmount, setIncomeAmount] = useState();
+    const [incomeAmount, setIncomeAmount] = useState('');
     const incomeCategories = ['Salary', 'Bonus', 'Other Income'];
     const [incomeCategory, setIncomeCategory] = useState(incomeCategories[0]);
     const [incomeDate, setIncomeDate] = useState(new Date().toISOString().slice(0, 10));

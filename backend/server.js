@@ -1,20 +1,26 @@
+
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: '*',
+  origin: process.env.CORS_ORIGIN || '*',
   methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 app.use(bodyParser.json());
 
-const mongoUser = 'saisaiaungbhone';
-const mongoPw = 'jqN3HyKozl6wCwDz';
-const mongoUri = `mongodb+srv://${mongoUser}:${mongoPw}@cluster0.ic99n.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const mongoUser = process.env.MONGO_USER;
+const mongoPw = process.env.MONGO_PASSWORD;
+const mongoHost = process.env.MONGO_HOST;
+const mongoDb = process.env.MONGO_DB;
+const mongoUri = `mongodb+srv://${mongoUser}:${mongoPw}@${mongoHost}/${mongoDb}?retryWrites=true&w=majority`;
 
 mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
@@ -28,6 +34,11 @@ const expenseSchema = new mongoose.Schema({
 });
 
 const Expense = mongoose.model('Expense', expenseSchema);
+
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
 
 // Get all expenses
 app.get('/api/expenses', async (req, res) => {
