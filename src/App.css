@@ -15,6 +15,75 @@ body {
   margin: 0;
 }
 
+/* Responsive dashboard container */
+.DashboardContainer {
+  background: #FFF;
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  gap: 30px;
+  width: 1100px;
+  min-height: 80vh;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 900px) {
+  .DashboardContainer {
+    flex-direction: column;
+    width: 95vw;
+    min-width: 0;
+    padding: 16px;
+    gap: 16px;
+  }
+  .Sidebar {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+  .MainContent {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .DashboardContainer {
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: none;
+  }
+  .Sidebar {
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 15px;
+  }
+  .MainContent {
+    gap: 8px;
+  }
+  .App {
+    padding: 0;
+  }
+  h1, h2, h3, h4, h5 {
+    font-size: 1.2em !important;
+  }
+}
+
+/* Responsive summary cards, transaction cards, etc. */
+@media (max-width: 600px) {
+  .SummaryCards, .ExpenseCard, .Balance, .Transactions {
+    flex-direction: column !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: 15px !important;
+  }
+  .TransactionCard {
+    flex-direction: column !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: 15px !important;
+  }
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
