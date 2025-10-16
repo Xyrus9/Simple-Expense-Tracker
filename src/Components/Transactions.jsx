@@ -12,7 +12,9 @@ const Component = styled(Box)`
 
 const Transactions = ({ transactions, deleteTransaction }) => {
     const [sortType, setSortType] = useState('Newest');
-    const [open, setOpen] = useState(false);
+    // Always show transactions on mobile
+    const isMobile = window.innerWidth <= 600;
+    const [open, setOpen] = useState(isMobile ? true : false);
     const sortedTransactions = [...transactions].sort((a, b) => {
         if (sortType === 'Newest') {
             return new Date(b.date) - new Date(a.date);
@@ -28,22 +30,22 @@ const Transactions = ({ transactions, deleteTransaction }) => {
 
     return (
         <Component>
-            <Box display="flex" alignItems="center" justifyContent="space-between">
-                <Typography variant="h5">Transaction History</Typography>
-                <Box display="flex" alignItems="center" gap={2}>
-                    <select value={sortType} onChange={e => setSortType(e.target.value)} style={{padding:'6px',borderRadius:'8px'}}>
+            <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" gap={1}>
+                <Typography variant="h5" style={{fontSize: isMobile ? '1.1em' : undefined, textAlign: 'center', width: '100%'}}>Transaction History</Typography>
+                <Box display="flex" alignItems="center" gap={2} style={{width: '100%', justifyContent: 'center', marginTop: 8}}>
+                    <select value={sortType} onChange={e => setSortType(e.target.value)} style={{padding:'6px',borderRadius:'8px',width: '160px', textAlign: 'center'}}>
                         <option value="Newest">Newest</option>
                         <option value="Oldest">Oldest</option>
                         <option value="Income">Income First</option>
                         <option value="Expense">Expense First</option>
                     </select>
-                    <button onClick={() => setOpen(o => !o)} style={{padding:'6px 12px',borderRadius:'8px',background:'#1976d2',color:'#fff',border:'none',cursor:'pointer'}}>
+                    <button onClick={() => setOpen(o => !o)} style={{padding:'6px 12px',borderRadius:'8px',background:'#1976d2',color:'#fff',border:'none',cursor:'pointer', width: '80px', textAlign: 'center'}}>
                         {open ? 'Hide' : 'Show'}
                     </button>
                 </Box>
             </Box>
             <Divider style={{width: '100%'}} />
-            {open && (
+            {(open || isMobile) && (
                 <List>
                     {
                         sortedTransactions.map(transaction => {
